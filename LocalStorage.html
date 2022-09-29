@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">button</button>
+
+  <script>
+    window.addEventListener('storage', function (e) {
+      if (e.key === 'ctc-msg') {
+        const data = JSON.parse(e.newValue);
+        const text = '[receive] ' + data.msg + ' —— tab ' + data.from;
+        console.log('[Storage I] receive message:', text);
+      }
+    });
+
+    const btn = document.querySelector("#btn")
+    btn.addEventListener("click", () => {
+      window.localStorage.setItem('ctc-msg', '123');
+      window.localStorage.setItem('ctc-msg', '123');
+      window.localStorage.removeItem('ctc-msg');
+    })
+
+  </script>
+
+</body>
+
+</html>
